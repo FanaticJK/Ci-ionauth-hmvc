@@ -29,7 +29,8 @@ $config['modules_locations'] = array(
 );
 if($_SERVER['HTTP_HOST']=="localhost" || $_SERVER['HTTP_HOST']=="127.0.1.1")
 {
-    $config['base_url']='http://localhost/yoursite/';
+    // $config['base_url']='http://localhost/yoursite/';
+    $config['base_url']='http://localhost/ci-ionauth-hmvc/';
 }
 
 else{

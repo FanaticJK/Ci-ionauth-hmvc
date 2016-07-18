@@ -29,17 +29,7 @@ class Auth extends MX_Controller
             }
 
 
-        }/*elseif ($this->ion_auth->is_reportapprove())
-		{
-			redirect('reportapprove/');
-		}elseif ($this->ion_auth->is_fieldsupervisor())
-		{
-			redirect('supervisor/');
-		}elseif ($this->ion_auth->is_fieldrepresentative())
-		{
-			redirect('team/');
-				}*/
-        else {
+        } else {
 
             // set the flash data error message if there is one
             $this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
@@ -83,7 +73,6 @@ class Auth extends MX_Controller
                 redirect('auth/login', 'refresh'); // use redirects instead of loading views for compatibility with MY_Controller libraries
             }
         } else {
-            $this->load->view('include/header.php');
             // the user is not logging in so display the login page
             // set the flash data error message if there is one
             $this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
