@@ -109,8 +109,8 @@ class Mymodel extends CI_Model {
         $this->db->from($tablename);
         $this->db->where($where);
         $query = $this->db->get();
-        if($query['num_rows']>0){
-            return $query->row()->value;
+        if($query->num_rows()>0){
+            return $query->num_rows();
         }else{
             return false;
         }
