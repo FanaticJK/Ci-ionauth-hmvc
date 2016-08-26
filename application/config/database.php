@@ -78,7 +78,7 @@ $db['default'] = array(
 	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => '',
-	'database' => 'cihmvc',
+	'database' => 'cihmva',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
@@ -94,3 +94,22 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+
+$mysqllocation = FCPATH.'cihmvc.sql';
+mysqli_connect(
+    $db['default']['hostname'],
+    $db['default']['username'],
+    $db['default']['password']
+);
+$mysqli = new mysqli(
+    $db['default']['hostname'],
+    $db['default']['username'],
+    $db['default']['password']
+);
+
+ if(!$mysqli->select_db($db['default']['database'])){
+  $mysqli->query( "CREATE DATABASE ".$db['default']['database'] );
+    $mysqli->select_db($db['default']['database']);
+  $mysqli->multi_query( file_get_contents( $mysqllocation ));
+  // redirect('auth/login', 'refresh');
+ };
