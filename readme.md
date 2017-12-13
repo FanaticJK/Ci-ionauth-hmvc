@@ -3,10 +3,6 @@
 
 This file contains a ready to go system which contains Codeigniter with Ion-Auth and HMVC with material design.
 
-[Creative Tim - Material Dashboard](https://www.creative-tim.com/product/material-dashboard)
-
-[Creative Tim - Material Dashboard - Live Preview](http://demos.creative-tim.com/material-dashboard/examples/dashboard.html)
-
 ##Installation
 
 - .htaccess
