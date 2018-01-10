@@ -1,66 +1,103 @@
-<h1><?php echo lang('edit_user_heading');?></h1>
-<p><?php echo lang('edit_user_subheading');?></p>
+<div class="wrapper">
 
-<div id="infoMessage"><?php echo $message;?></div>
+    <?php include 'include/sidebar.php'; ?>
 
-<?php echo form_open(uri_string());?>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Dashboard
+                <small>Control panel</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li class="active">Dashboard</li>
+            </ol>
+        </section>
 
-      <p>
-            <?php echo lang('edit_user_fname_label', 'first_name');?> <br />
-            <?php echo form_input($first_name);?>
-      </p>
+        <!-- Main content -->
+        <div class="content">
+            <div class="row">
 
-      <p>
-            <?php echo lang('edit_user_lname_label', 'last_name');?> <br />
-            <?php echo form_input($last_name);?>
-      </p>
+                <div class="col-md-12">
+                    <h1><?php echo lang('edit_user_heading'); ?></h1>
+                    <p><?php echo lang('edit_user_subheading'); ?></p>
 
-      <p>
-            <?php echo lang('edit_user_company_label', 'company');?> <br />
-            <?php echo form_input($company);?>
-      </p>
+                    <div id="infoMessage"><?php echo $message; ?></div>
 
-      <p>
-            <?php echo lang('edit_user_phone_label', 'phone');?> <br />
-            <?php echo form_input($phone);?>
-      </p>
+                    <?php echo form_open(uri_string()); ?>
 
-      <p>
-            <?php echo lang('edit_user_password_label', 'password');?> <br />
-            <?php echo form_input($password);?>
-      </p>
+                    <div class="form-group">
+                        <?php echo lang('edit_user_fname_label', 'first_name'); ?> <br/>
+                        <?php echo form_input($first_name); ?>
+                    </div>
 
-      <p>
-            <?php echo lang('edit_user_password_confirm_label', 'password_confirm');?><br />
-            <?php echo form_input($password_confirm);?>
-      </p>
+                    <div class="form-group">
+                        <?php echo lang('edit_user_lname_label', 'last_name'); ?> <br/>
+                        <?php echo form_input($last_name); ?>
+                    </div>
 
-      <?php if ($this->ion_auth->is_admin()): ?>
+                    <div class="form-group">
+                        <strong>Email:</strong><br/>
+                        <?php echo form_input($email); ?>
+                    </div>
 
-          <h3><?php echo lang('edit_user_groups_heading');?></h3>
-          <?php foreach ($groups as $group):?>
-              <label class="checkbox">
-              <?php
-                  $gID=$group['id'];
-                  $checked = null;
-                  $item = null;
-                  foreach($currentGroups as $grp) {
-                      if ($gID == $grp->id) {
-                          $checked= ' checked="checked"';
-                      break;
-                      }
-                  }
-              ?>
-              <input type="checkbox" name="groups[]" value="<?php echo $group['id'];?>"<?php echo $checked;?>>
-              <?php echo htmlspecialchars($group['name'],ENT_QUOTES,'UTF-8');?>
-              </label>
-          <?php endforeach?>
+                    <div class="form-group">
+                        <?php echo lang('edit_user_company_label', 'company'); ?> <br/>
+                        <?php echo form_input($company); ?>
+                    </div>
 
-      <?php endif ?>
+                    <div class="form-group">
+                        <?php echo lang('edit_user_phone_label', 'phone'); ?> <br/>
+                        <?php echo form_input($phone); ?>
+                    </div>
 
-      <?php echo form_hidden('id', $user->id);?>
-      <?php echo form_hidden($csrf); ?>
+                    <div class="form-group">
+                        <?php echo lang('edit_user_password_label', 'password'); ?> <br/>
+                        <?php echo form_input($password); ?>
+                    </div>
 
-      <p><?php echo form_submit('submit', lang('edit_user_submit_btn'));?></p>
+                    <div class="form-group">
+                        <?php echo lang('edit_user_password_confirm_label', 'password_confirm'); ?><br/>
+                        <?php echo form_input($password_confirm); ?>
+                    </div>
+                    <div class="form-group">
+                        <?php if ($this->ion_auth->is_admin()): ?>
 
-<?php echo form_close();?>
+                            <h3><?php echo lang('edit_user_groups_heading'); ?></h3>
+                            <?php foreach ($groups as $group): ?>
+                                <div class="radio">
+                                    <label>
+                                        <?php
+                                        $gID = $group['id'];
+                                        $checked = null;
+                                        $item = null;
+                                        foreach ($currentGroups as $grp) {
+                                            if ($gID == $grp->id) {
+                                                $checked = ' checked="checked"';
+                                                break;
+                                            }
+                                        }
+                                        ?>
+                                        <input type="radio" name="groups[]"
+                                               value="<?php echo $group['id']; ?>"<?php echo $checked; ?>>
+                                        <?php echo ucfirst(htmlspecialchars($group['name'], ENT_QUOTES, 'UTF-8')); ?>
+                                    </label>
+                                </div>
+                            <?php endforeach ?>
+
+                        <?php endif ?>
+                    </div>
+
+                    <?php echo form_hidden('id', $user->id); ?>
+                    <?php echo form_hidden($csrf); ?>
+
+                    <div class="form-group"><?php echo form_submit('submit', lang('edit_user_submit_btn'), array('class'=> 'btn btn-success')); ?></div>
+
+                    <?php echo form_close(); ?>
+                </div>
+            </div>
+            </section>
+        </div>
+    </div>

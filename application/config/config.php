@@ -32,7 +32,7 @@ $host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : "";
 if ($_SERVER['HTTP_HOST'] == "localhost" || $_SERVER['HTTP_HOST'] == "127.0.1.1") {
     // $config['base_url']='http://localhost/yoursite/';
     // $config['base_url'] = 'http://'. $_SERVER['HTTP_HOST'] .'/radius/';
-    $config['base_url'] = $protocol.$host."/radius/";
+    $config['base_url'] = $protocol.$host."/ci-ionauth-hmvc/";
 } else {
     $config['base_url'] = $protocol.$host;
 }
