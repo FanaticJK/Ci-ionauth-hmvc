@@ -48,7 +48,6 @@ class Auth extends MX_Controller
         $this->load->view('include/footer');
     }
 
-
     function login()
     {
 
@@ -109,7 +108,6 @@ class Auth extends MX_Controller
         $this->session->set_flashdata('message', $this->ion_auth->messages());
         redirect('auth/login', 'refresh');
     }
-
 
     // forgot password
     function forgot_password()
@@ -245,7 +243,6 @@ class Auth extends MX_Controller
             redirect("auth/forgot_password", 'refresh');
         }
     }
-
 
     // activate the user
     function activate($id, $code = false)

@@ -304,16 +304,27 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
-            <li class="<?php echo ($this->uri->segment(1) == 'auth' && $this->uri->segment(1) != '')? 'active':''; ?> treeview">
+            <li class="<?php echo ($this->uri->segment(1) == '') ? 'active' : ''; ?> treeview">
+                <a href="<?php echo base_url() ?>">
+                    <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                    <span class="pull-right-container">
+                    </span>
+                </a>
+            </li>
+            <li class="<?php echo ($this->uri->segment(1) == 'auth' && $this->uri->segment(1) != '') ? 'active' : ''; ?> treeview">
                 <a href="#">
-                    <i class="fa fa-dashboard"></i> <span>System</span>
+                    <i class="fa fa-dashboard"></i> <span>Users</span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="<?php echo ($this->uri->segment(2) == 'list_user' && $this->uri->segment(2) != '')? 'active':''; ?>"><a href="<?php echo base_url('auth/list_user'); ?>"><i class="fa fa-circle-o"></i> List User</a></li>
-                    <li class="<?php echo ($this->uri->segment(2) == 'create_user' && $this->uri->segment(2) != '')? 'active':''; ?>"><a href="<?php echo base_url('auth/create_user'); ?>"><i class="fa fa-circle-o"></i> Create User</a></li>
+                    <li class="<?php echo ($this->uri->segment(2) == 'list_user' && $this->uri->segment(2) != '') ? 'active' : ''; ?>">
+                        <a href="<?php echo base_url('auth/list_user'); ?>"><i class="fa fa-circle-o"></i> List User</a>
+                    </li>
+                    <li class="<?php echo ($this->uri->segment(2) == 'create_user' && $this->uri->segment(2) != '') ? 'active' : ''; ?>">
+                        <a href="<?php echo base_url('auth/create_user'); ?>"><i class="fa fa-circle-o"></i> Create User</a>
+                    </li>
                 </ul>
             </li>
         </ul>
