@@ -15,56 +15,56 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Dashboard
-                <small>Control panel</small>
+                Users
+                <small>List User</small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active">Dashboard</li>
+                <li><a href="<?php base_url() ?>"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li class="active">List Users</li>
             </ol>
         </section>
 
         <!-- Main content -->
         <section class="content">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header" data-background-color="blue">
-                            <h4 class="title">User List</h4>
-                            <p class="category">Here you can edit, delete a user.</p>
-                        </div>
-                        <div class="card-content table-responsive">
-                            <table class="table">
-                                <thead class="text-primary">
-                                <th>S No.</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Action</th>
-                                </thead>
-                                <tbody>
-                                <?php
-                                $i = $pages + 1;
-                                foreach ($listUsers as $userDetail): ?>
-                                    <tr>
-                                        <td><?php echo $i++; ?></td>
-                                        <td><?php echo $userDetail['first_name'] . " " . $userDetail['last_name']; ?></td>
-                                        <td><?php echo $userDetail['email']; ?></td>
-                                        <td>
-                                            <a href="<?php echo base_url('auth/edit_user/' . $userDetail['id']); ?>"
-                                               title="Edit" rel="tooltip"><i class="fa fa-pencil-square-o"></i></a>
-                                            | <a
-                                                    href="javascript:void(0)" rel="tooltip"
-                                                    onclick="deleteUser('delete_user', '<?php echo $userDetail['id']; ?>')"
-                                                    title="Delete"><i
-                                                        class="fa fa-trash text-danger"></i></a></td>
-                                    </tr>
-                                <?php endforeach; ?>
-                                </tbody>
-                            </table>
-                            <div class="clear pagination">
-                                <ul>
-                                    <?php echo $this->pagination->create_links(); ?>
-                                </ul>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-content table-responsive">
+                                    <table class="table">
+                                        <thead class="text-primary">
+                                        <th>S No.</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Action</th>
+                                        </thead>
+                                        <tbody>
+                                        <?php
+                                        $i = $pages + 1;
+                                        foreach ($listUsers as $userDetail): ?>
+                                            <tr>
+                                                <td><?php echo $i++; ?></td>
+                                                <td><?php echo $userDetail['first_name'] . " " . $userDetail['last_name']; ?></td>
+                                                <td><?php echo $userDetail['email']; ?></td>
+                                                <td>
+                                                    <a href="<?php echo base_url('auth/edit_user/' . $userDetail['id']); ?>"
+                                                       title="Edit" rel="tooltip"><i class="fa fa-pencil-square-o"></i></a>
+                                                    | <a
+                                                            href="javascript:void(0)" rel="tooltip"
+                                                            onclick="deleteUser('delete_user', '<?php echo $userDetail['id']; ?>')"
+                                                            title="Delete"><i
+                                                                class="fa fa-trash text-danger"></i></a></td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                        </tbody>
+                                    </table>
+                                    <div class="clear pagination">
+                                        <ul>
+                                            <?php echo $this->pagination->create_links(); ?>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
