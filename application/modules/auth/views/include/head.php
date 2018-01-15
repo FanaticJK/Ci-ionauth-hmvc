@@ -223,11 +223,15 @@
                     </ul>
                 </li>
                 <!-- User Account: style can be found in dropdown.less -->
+                <?php $userDetails = $this->ion_auth->user()->row_array();
+                $userFullName = $userDetails['first_name']. ' ' . $userDetails['last_name'];
+                ?>
+                <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <img src="<?php echo base_url(); ?>assets/dist/img/user2-160x160.jpg" class="user-image"
                              alt="User Image">
-                        <span class="hidden-xs">Alexander Pierce</span>
+                        <span class="hidden-xs"><?php echo $userFullName; ?></span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
@@ -236,8 +240,8 @@
                                  alt="User Image">
 
                             <p>
-                                Alexander Pierce - Web Developer
-                                <small>Member since Nov. 2012</small>
+                                <?php echo $userFullName; ?>
+                                <small>Member since <?php echo date('M, Y', $userDetails['created_on']) ?></small>
                             </p>
                         </li>
                         <!-- Menu Body -->
@@ -253,7 +257,7 @@
                                     <a href="#">Friends</a>
                                 </div>
                             </div>
-                            <!-- /.row -->
+                            <!-- /.row-->
                         </li>
                         <!-- Menu Footer-->
                         <li class="user-footer">
