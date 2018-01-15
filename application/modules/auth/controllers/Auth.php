@@ -77,14 +77,15 @@ class Auth extends MX_Controller
             $this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
 
             $this->data['identity'] = array('name' => 'identity',
-                'class' => 'form-control',
+                'class' => 'form-control input-lg',
                 'id' => 'identity',
                 'type' => 'email',
                 'placeholder' => 'Email Address',
                 'value' => $this->form_validation->set_value('identity'),
+                'autofocus' => 'autofocus',
             );
             $this->data['password'] = array('name' => 'password',
-                'class' => 'form-control',
+                'class' => 'form-control input-lg',
                 'id' => 'password',
                 'type' => 'password',
                 'placeholder' => 'password'
@@ -123,7 +124,7 @@ class Auth extends MX_Controller
             $this->data['type'] = $this->config->item('identity', 'ion_auth');
             // setup the input
             $this->data['identity'] = array('name' => 'identity', 'class' => 'form-control',
-                'id' => 'identity', 'type' => 'email'
+                'id' => 'identity', 'type' => 'email', 'placeholder' => 'Email Address'
             );
 
             if ($this->config->item('identity', 'ion_auth') != 'email') {
