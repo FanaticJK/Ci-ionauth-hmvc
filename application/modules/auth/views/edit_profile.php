@@ -77,14 +77,14 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <?php if ($this->ion_auth->is_admin()): ?>
+                                <?php /*if ($this->ion_auth->is_admin()): */?><!--
 
-                                    <h3><?php echo lang('edit_user_groups_heading'); ?></h3>
-                                    <?php foreach ($groups as $group): ?>
+                                    <h3><?php /*echo lang('edit_user_groups_heading'); */?></h3>
+                                    <?php /*foreach ($groups as $group): */?>
                                         <div class="radio">
                                             <label>
                                                 <?php
-                                                $gID = $group['id'];
+/*                                                $gID = $group['id'];
                                                 $checked = null;
                                                 $item = null;
                                                 foreach ($currentGroups as $grp) {
@@ -93,15 +93,15 @@
                                                         break;
                                                     }
                                                 }
-                                                ?>
+                                                */?>
                                                 <input type="radio" name="groups[]"
-                                                       value="<?php echo $group['id']; ?>"<?php echo $checked; ?>>
-                                                <?php echo ucfirst(htmlspecialchars($group['name'], ENT_QUOTES, 'UTF-8')); ?>
+                                                       value="<?php /*echo $group['id']; */?>"<?php /*echo $checked; */?>>
+                                                <?php /*echo ucfirst(htmlspecialchars($group['name'], ENT_QUOTES, 'UTF-8')); */?>
                                             </label>
                                         </div>
-                                    <?php endforeach ?>
+                                    <?php /*endforeach */?>
 
-                                <?php endif ?>
+                                --><?php /*endif */?>
                             </div>
 
                             <?php echo form_hidden('id', $user->id); ?>

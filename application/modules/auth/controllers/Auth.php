@@ -29,8 +29,6 @@ class Auth extends MX_Controller
             if ($this->mymodel->getValue('id', $currentUser, 'users', 'active')) {
                 redirect('company/index');
             }
-
-
         } else {
 
             // set the flash data error message if there is one
@@ -765,11 +763,15 @@ class Auth extends MX_Controller
         $this->_render_page('auth/profile', $this->data);
         $this->load->view('include/footer');
     }
+
+    /*
+     * Edit currently logged in user
+     */
     function editProfile()
     {
         $this->data['siteTitle'] = "Edit User";
         $id = $this->ion_auth->get_user_id();
-        if (!$this->ion_auth->logged_in() || (!$this->ion_auth->is_admin() && !($this->ion_auth->user()->row()->id == $id))) {
+        if (!$this->ion_auth->logged_in() || (!$this->ion_auth->is_admin())) {
             redirect('auth', 'refresh');
         }
 
