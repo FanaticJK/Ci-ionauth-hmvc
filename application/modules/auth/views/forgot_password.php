@@ -16,7 +16,6 @@
     <p><?php /*echo form_submit('submit', lang('forgot_password_submit_btn')); */ ?></p>-->
 
 <?php //echo form_close(); ?>
-
     <div class="container">
 
         <div class="row" style="margin-top:20px">
@@ -29,14 +28,9 @@
                     <div class="form-group">
                         <?php echo form_input($identity); ?>
                     </div>
-
+                        <a href="<?php echo base_url('auth/login'); ?>" class="btn btn-link">Sign In</a>
                     <hr class="colorgraph">
                     <div class="row">
-                        <div class="row-sm-12">
-                            <div class="text-center">
-                                <a href="<?php echo base_url('auth/login'); ?>">Sign In</a>
-                            </div>
-                        </div>
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <input type="submit" class="btn btn-lg btn-success btn-block" value="Send Email">
                         </div>

@@ -16,11 +16,11 @@
                         <?php echo form_input($password); ?>
                     </div>
                     <span class="button-checkbox">
-					<button type="button" class="btn" data-color="info">Remember Me</button>
+                    <button type="button" class="btn" data-color="info">Remember Me</button>
                         <?php echo form_checkbox('remember', '1', FALSE, array('id' => 'remember', 'class' => 'hidden')); ?>
                         <a href="forgot_password"
                            class="btn btn-link pull-right"><?php echo lang('login_forgot_password'); ?></a>
-				</span>
+                    </span>
                     <hr class="colorgraph">
                     <div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6">
