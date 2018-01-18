@@ -65,7 +65,15 @@
                                             </div>
                                         </div>
                                     </div>
+<div class="form-group">
+                                <?php echo lang('edit_user_company_label', 'company'); ?> <br/>
+                                <?php echo form_input($company); ?>
+                            </div>
 
+                            <div class="form-group">
+                                <?php echo lang('edit_user_phone_label', 'phone'); ?> <br/>
+                                <?php echo form_input($phone); ?>
+                            </div>
                                     <div class="row">
                                         <div class="col-md-6">
 

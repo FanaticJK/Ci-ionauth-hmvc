@@ -265,7 +265,7 @@
                                 <a href="<?php echo base_url('auth/profile/'.$this->ion_auth->get_user_id()) ?>" class="btn btn-default btn-flat">Profile</a>
                             </div>
                             <div class="pull-right">
-                                <a href="<?php echo base_url(); ?>auth/logout" class="btn btn-default btn-flat">Sign
+                                <a href="<?php echo base_url(); ?>auth/logout" class="btn btn-danger btn-flat">Sign
                                     out</a>
                             </div>
                         </li>

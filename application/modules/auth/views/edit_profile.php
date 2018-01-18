@@ -15,12 +15,12 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                <?php echo lang('edit_user_heading'); ?>
-                <small><?php echo lang('edit_user_subheading'); ?></small>
+                Edit Profile
+                <small>Please enter the your information below.</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="<?php echo base_url() ?>"><i class="fa fa-dashboard"></i> Home</a></li>
-                <li class="active">Edit User</li>
+                <li class="active">Edit Profile</li>
             </ol>
         </section>
 
@@ -30,8 +30,6 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-12">
-
-                            <div id="infoMessage"><?php echo $message; ?></div>
 
                             <?php echo form_open(uri_string()); ?>
                             <div class="row">
@@ -107,7 +105,7 @@
                             <?php echo form_hidden('id', $user->id); ?>
                             <?php echo form_hidden($csrf); ?>
 
-                            <div class="form-group"><?php echo form_submit('submit', lang('edit_user_submit_btn'), array('class' => 'btn btn-success')); ?></div>
+                            <div class="form-group"><?php echo form_submit('submit', 'Update Profile', array('class' => 'btn btn-success')); ?></div>
 
                             <?php echo form_close(); ?>
                         </div>

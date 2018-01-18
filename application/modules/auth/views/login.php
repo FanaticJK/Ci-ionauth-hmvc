@@ -5,6 +5,7 @@
 
         <div class="row" style="margin-top:20px">
             <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+                
                 <?php echo form_open("auth/login", array('class' => 'form-signin')); ?>
                 <fieldset>
                     <h2><?php echo lang('login_heading'); ?></h2>
