@@ -1,3 +1,14 @@
+<footer class="main-footer">
+    <div class="pull-right hidden-xs">
+        <b>Version</b> 2.3.12
+    </div>
+    <strong>Copyright &copy; 2014-2016 <a href="#">Sujan Karki</a>.</strong> All rights
+    reserved.
+</footer>
+<!--toggle sidebar-->
+<?php include "right-toggle-sidebar.php";?>
+</div>
+<!--toggle sidebar-->
 <?php if ($this->session->flashdata('success_message') != "") { ?>
     <div class="modal modal-success fade in" id="modal-success" style="">
       <div class="modal-dialog">

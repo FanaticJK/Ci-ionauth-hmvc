@@ -670,6 +670,7 @@ class Auth extends MX_Controller
         );
 
         $this->_render_page('auth/edit_user', $this->data);
+        $this->load->view('include/footer');
     }
 
     function _get_csrf_nonce()
