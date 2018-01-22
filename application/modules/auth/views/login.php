@@ -1,3 +1,4 @@
+<?php include "include/header.php"; ?>
 <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/css/login.css">
 
 <div class="container">
