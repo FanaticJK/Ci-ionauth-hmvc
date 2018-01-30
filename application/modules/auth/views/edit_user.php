@@ -99,7 +99,9 @@
                                 </div>
                             </div>
                             <div class="col-md-4">
+                                <?php if (getimagesize('./' . $user->profile_image_url) !== false):?>
                                 <img src="<?php echo base_url($user->profile_image_url); ?>" class="img-responsive">
+                            <?php endif; ?>
                             </div>
                         </div>
                         <?php echo form_hidden('id', $user->id); ?>

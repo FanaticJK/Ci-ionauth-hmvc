@@ -230,15 +230,17 @@
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="<?php echo base_url(); ?>" class="user-image"
-                             alt="User Image">
+                        <?php if (getimagesize('./' . $profileImage) !== false):?>
+                                <img src="<?php echo base_url($profileImage); ?>" class="user-image">
+                            <?php endif; ?>
                         <span class="hidden-xs"><?php echo $userFullName; ?></span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
-                            <img src="<?php echo base_url().$profileImage; ?>" class="img-circle"
-                                 alt="User Image">
+                            <?php if (getimagesize('./' . $profileImage) !== false):?>
+                                <img src="<?php echo base_url().$profileImage; ?>" class="img-circle">
+                            <?php endif; ?>
 
                             <p>
                                 <?php echo $userFullName; ?>

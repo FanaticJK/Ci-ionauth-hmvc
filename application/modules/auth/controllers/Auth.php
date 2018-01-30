@@ -809,9 +809,9 @@ class Auth extends MX_Controller
 
         if (isset($_POST) && !empty($_POST)) {
             // do we have a valid request?
-            if ($this->_valid_csrf_nonce() === FALSE || $id != $this->input->post('id')) {
+            /*if ($this->_valid_csrf_nonce() === FALSE || $id != $this->input->post('id')) {
                 show_error($this->lang->line('error_csrf'));
-            }
+            }*/
 
             // update the password if it was posted
             if ($this->input->post('password')) {
@@ -851,6 +851,13 @@ class Auth extends MX_Controller
 
                 // check to see if we are updating the user
                 if ($this->ion_auth->update($user->id, $data)) {
+                    $insert_id = $user->id;
+                    /*upload file*/
+                    $this->load->library('fileupload');
+                    if (file_exists($_FILES['profileImage']['tmp_name'])) {
+                        $this->fileupload->editUploadFile($_FILES['profileImage'], 'profile_image_url', 'profileImage', $insert_id, 'users');
+                    }
+                    /*upload file*/
                     // redirect them back to the admin page if admin, or to the base url if non admin
                     $this->session->set_flashdata('success_message', $this->ion_auth->messages());
                     if ($this->ion_auth->is_admin()) {

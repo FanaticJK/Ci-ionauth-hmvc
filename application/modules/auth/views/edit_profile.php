@@ -27,7 +27,7 @@
                 <div class="row">
                     <div class="col-md-12">
 
-                        <?php echo form_open(uri_string()); ?>
+                        <?php echo form_open_multipart(uri_string()); ?>
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
@@ -97,7 +97,19 @@
 
                                 --><?php /*endif */ ?>
                         </div>
-
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="">
+                                    <label id="" class="">Profile Image</label>
+                                    <input type="file" name="profileImage">
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <?php if (getimagesize('./' . $user->profile_image_url) !== false):?>
+                                <img src="<?php echo base_url($user->profile_image_url); ?>" class="img-responsive">
+                            <?php endif; ?>
+                            </div>
+                        </div>
                         <?php echo form_hidden('id', $user->id); ?>
                         <?php echo form_hidden($csrf); ?>
 

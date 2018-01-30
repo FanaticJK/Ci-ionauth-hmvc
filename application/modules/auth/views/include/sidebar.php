@@ -6,8 +6,9 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="<?php echo base_url(); ?>assets/dist/img/user2-160x160.jpg" class="img-circle"
-                     alt="User Image">
+                <?php if (getimagesize('./' . $profileImage) !== false):?>
+                    <img src="<?php echo base_url().$profileImage; ?>" class="img-circle">
+                <?php endif; ?>
             </div>
             <div class="pull-left info">
                 <p><?php echo $userFullName; ?></p>
