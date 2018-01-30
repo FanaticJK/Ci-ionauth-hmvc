@@ -100,12 +100,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <?php ?>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="">
-                                            <label id="" class="">Document 1</label>
-                                            <input type="file" name="docs1">
+                                            <label id="" class="">Profile Image</label>
+                                            <input type="file" name="profileImage">
                                         </div>
                                     </div>
                                 </div>

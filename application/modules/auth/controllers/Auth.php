@@ -12,6 +12,7 @@ class Auth extends MX_Controller
         $this->lang->load('auth');
         $this->load->library('pagination');
         $this->load->library('paginationlib');
+        $this->form_validation->set_error_delimiters('<p class="text-danger">', '</p>');
     }
 
     // redirect if needed, otherwise display the user list
@@ -334,6 +335,7 @@ class Auth extends MX_Controller
             $password = $this->input->post('password');
 
             $additional_data = array(
+                'username' => strtolower($this->input->post('first_name')) . '_' . uniqid(),
                 'first_name' => $this->input->post('first_name'),
                 'last_name' => $this->input->post('last_name'),
                 'company'    => $this->input->post('company'),
@@ -345,12 +347,14 @@ class Auth extends MX_Controller
             $group = array($this->input->post('accesstype'));
         }
 
+            
         if ($this->form_validation->run() == true && $insert_id = $this->ion_auth->register($identity, $password, $email, $additional_data, $group)) {
+
             /*upload file*/
 //            $insert_id = $this->db->insert_id();
-            $this->load->library('FileUpload');
-            if (file_exists($_FILES['docs1']['tmp_name'])) {
-                $this->FileUpload->uploadFile($_FILES['docs1'], '1', 'docs1', $insert_id, 'users');
+            $this->load->library('fileupload');
+            if (file_exists($_FILES['profileImage']['tmp_name'])) {
+                $this->fileupload->uploadFile($_FILES['profileImage'], 'profile_image_url', 'profileImage', $insert_id, 'users');
             }
             /*upload file*/
             // check to see if we are creating the user
@@ -419,7 +423,7 @@ class Auth extends MX_Controller
                 'type' => 'password',
             );
             /*additional fields*/
-            $this->data['userRole'] = array_replace($this->ion_auth->dropdown_array('id', 'name', 'groups'), array('' => ''));
+            $this->data['userRole'] = array_replace($this->ion_auth->dropdown_array('id', 'name', 'groups'), array('' => 'Select User Role'));
 
             $this->_render_page('auth/create_user', $this->data);
             $this->load->view('include/footer');
@@ -588,6 +592,13 @@ class Auth extends MX_Controller
 
                 // check to see if we are updating the user
                 if ($this->ion_auth->update($user->id, $data)) {
+                    $insert_id = $user->id;
+                    /*upload file*/
+                    $this->load->library('fileupload');
+                    if (file_exists($_FILES['profileImage']['tmp_name'])) {
+                        $this->fileupload->editUploadFile($_FILES['profileImage'], 'profile_image_url', 'profileImage', $insert_id, 'users');
+                    }
+                    /*upload file*/
                     // redirect them back to the admin page if admin, or to the base url if non admin
                     $this->session->set_flashdata('success_message', $this->ion_auth->messages());
                     if ($this->ion_auth->is_admin()) {
