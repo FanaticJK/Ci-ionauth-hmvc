@@ -9,7 +9,7 @@ This file contains a ready to go system which contains Codeigniter with Ion-Auth
 change the RewriteBase to your base folder name.
 ```
     RewriteEngine On
-    RewriteBase /ci-ion-auth-hmvc-material-design/
+    RewriteBase /ci-ionauth-hmvc/
 ```
 
 - Database (application/database.php)
@@ -29,7 +29,7 @@ $protocol = is_https() ? "https://" : "http://";
 $host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : "";
 if ($_SERVER['HTTP_HOST'] == "localhost" || $_SERVER['HTTP_HOST'] == "127.0.1.1") {
     // $config['base_url']='http://localhost/yoursite/';
-    $config['base_url'] = $protocol.$host."/radius/";
+    $config['base_url'] = $protocol.$host."/ci-ionauth-hmvc/";
 } else {
     $config['base_url'] = $protocol.$host;
 }
