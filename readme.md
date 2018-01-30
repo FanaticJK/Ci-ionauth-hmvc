@@ -1,7 +1,7 @@
 
 #CI - Ion-Auth Hmvc - Material Design
 
-This file contains a ready to go system which contains Codeigniter with Ion-Auth and HMVC with material design.
+This file contains a ready to go system which contains Codeigniter with Ion-Auth and HMVC.
 
 ##Installation
 
@@ -9,7 +9,7 @@ This file contains a ready to go system which contains Codeigniter with Ion-Auth
 change the RewriteBase to your base folder name.
 ```
     RewriteEngine On
-    RewriteBase /ci-ionauth-hmvc/
+    RewriteBase /Ci-ionauth-hmvc/
 ```
 
 - Database (application/database.php)
@@ -29,7 +29,7 @@ $protocol = is_https() ? "https://" : "http://";
 $host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : "";
 if ($_SERVER['HTTP_HOST'] == "localhost" || $_SERVER['HTTP_HOST'] == "127.0.1.1") {
     // $config['base_url']='http://localhost/yoursite/';
-    $config['base_url'] = $protocol.$host."/ci-ionauth-hmvc/";
+    $config['base_url'] = $protocol.$host."/Ci-ionauth-hmvc/";
 } else {
     $config['base_url'] = $protocol.$host;
 }

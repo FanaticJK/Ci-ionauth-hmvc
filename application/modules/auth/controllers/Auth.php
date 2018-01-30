@@ -782,6 +782,8 @@ class Auth extends MX_Controller
             return show_error('You must be logged in to view this page.');
         }
         $this->data['userData'] = $this->mymodel->get('users', '*', 'id = '. $id);
+        $user = $this->ion_auth->user($id)->row();
+        $this->data['user'] = $user;
         $this->_render_page('auth/profile', $this->data);
         $this->load->view('include/footer');
     }
