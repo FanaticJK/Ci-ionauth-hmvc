@@ -458,17 +458,20 @@ class Auth extends MX_Controller
             $this->data['group_name'] = array(
                 'name' => 'group_name',
                 'id' => 'group_name',
+                'class' => 'form-control',
                 'type' => 'text',
                 'value' => $this->form_validation->set_value('group_name'),
             );
             $this->data['description'] = array(
                 'name' => 'description',
                 'id' => 'description',
+                'class' => 'form-control',
                 'type' => 'text',
                 'value' => $this->form_validation->set_value('description'),
             );
 
             $this->_render_page('auth/create_group', $this->data);
+            $this->load->view('include/footer');
         }
     }
 
@@ -516,6 +519,7 @@ class Auth extends MX_Controller
             'name' => 'group_name',
             'id' => 'group_name',
             'type' => 'text',
+            'class' => 'form-control',
             'value' => $this->form_validation->set_value('group_name', $group->name),
             $readonly => $readonly,
         );
@@ -523,10 +527,12 @@ class Auth extends MX_Controller
             'name' => 'group_description',
             'id' => 'group_description',
             'type' => 'text',
+            'class' => 'form-control',
             'value' => $this->form_validation->set_value('group_description', $group->description),
         );
 
         $this->_render_page('auth/edit_group', $this->data);
+        $this->load->view('include/footer');
     }
 
     // edit a user
@@ -750,6 +756,23 @@ class Auth extends MX_Controller
         $this->load->view('include/footer');
     }
 
+    // list groups
+    public function list_groups()
+    {
+        $this->data['title'] = $this->lang->line('edit_user_heading');
+
+        if (!$this->ion_auth->logged_in() || (!$this->ion_auth->is_admin())) {
+            redirect('auth', 'refresh');
+        }
+
+        $pagingConfig = $this->paginationlib->initPagination("/auth/list_user/pages/", $this->mymodel->getCount('id', 'groups', 'id != ' . $this->ion_auth->user()->row()->id));
+        $this->data['pages'] = $pages = (($this->uri->segment(3) == 'pages' && $this->uri->segment(4) != '') ? ($pagingConfig['per_page'] * $this->uri->segment(4)) - $pagingConfig['per_page'] : 0);
+
+        $this->data['listgroups'] = $this->mymodel->get('groups', '*', 'id != ' . $this->ion_auth->user()->row()->id, $pagingConfig['per_page'], $pages);
+        $this->_render_page('auth/list_groups', $this->data);
+        $this->load->view('include/footer');
+    }
+
     //delete user
     /**
      * @param
@@ -768,6 +791,26 @@ class Auth extends MX_Controller
             $this->session->set_flashdata('error_message', 'User Deleted Successfully.');
         }
         redirect('auth/list_user');
+    }
+
+    //delete group
+    /**
+     * @param
+     *
+     * @return mixed
+     */
+    public function delete_group($id)
+    {
+        if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin()) {
+            // redirect them to the home page because they must be an administrator to view this
+            return show_error('You must be an administrator to view this page.');
+        }
+        if ($this->mymodel->delete('groups', 'id', $id)) {
+            $this->session->set_flashdata('success_message', 'Group Deleted Successfully.');
+        }else{
+            $this->session->set_flashdata('error_message', 'Oops! something went wrong.');
+        }
+        redirect('auth/list_groups');
     }
 
     /**

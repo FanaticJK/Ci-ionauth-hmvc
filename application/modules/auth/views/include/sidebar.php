@@ -40,7 +40,7 @@
                     </span>
                 </a>
             </li>
-            <li class="<?php echo ($this->uri->segment(1) == 'auth' && $this->uri->segment(1) != '') ? 'active' : ''; ?> treeview">
+            <li class="<?php echo ($this->uri->segment(1) == 'auth' && $this->uri->segment(1) != '' && ($this->uri->segment(2) == 'list_user' || $this->uri->segment(2) == 'create_user' || $this->uri->segment(2) == 'edit_user')) ? 'active' : ''; ?> treeview">
                 <a href="#">
                     <i class="fa fa-dashboard"></i> <span>Users</span>
                     <span class="pull-right-container">
@@ -53,6 +53,22 @@
                     </li>
                     <li class="<?php echo ($this->uri->segment(2) == 'create_user' && $this->uri->segment(2) != '') ? 'active' : ''; ?>">
                         <a href="<?php echo base_url('auth/create_user'); ?>"><i class="fa fa-circle-o"></i> Create User</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="<?php echo ($this->uri->segment(2) == 'create_group' || $this->uri->segment(2) == 'edit_group' || $this->uri->segment(2) == 'list_groups' ) ? 'active' : ''; ?> treeview">
+                <a href="#">
+                    <i class="fa fa-dashboard"></i> <span>Groups</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="<?php echo ($this->uri->segment(2) == 'list_groups' && $this->uri->segment(2) != '') ? 'active' : ''; ?>">
+                        <a href="<?php echo base_url('auth/list_groups'); ?>"><i class="fa fa-circle-o"></i> List Groups</a>
+                    </li>
+                    <li class="<?php echo ($this->uri->segment(2) == 'create_group' && $this->uri->segment(2) != '') ? 'active' : ''; ?>">
+                        <a href="<?php echo base_url('auth/create_group'); ?>"><i class="fa fa-circle-o"></i> Create Group</a>
                     </li>
                 </ul>
             </li>
