@@ -1,4 +1,4 @@
-<?php if ($this->ion_auth->logged_in()): ?>
+<?php if ( $this->ion_auth->logged_in() ): ?>
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
             <b>Version</b> 2.3.12
@@ -7,11 +7,11 @@
         reserved.
     </footer>
     <!--toggle sidebar-->
-    <?php include "right-toggle-sidebar.php"; ?>
+	<?php include "right-toggle-sidebar.php"; ?>
     </div>
 <?php endif; ?>
 <!--toggle sidebar-->
-<?php if ($this->session->flashdata('success_message') != "") { ?>
+<?php if ( $this->session->flashdata( 'success_message' ) != "" ) { ?>
     <div class="modal modal-success fade in" id="modal-success" style="">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -21,7 +21,7 @@
                     <h4 class="modal-title">Success</h4>
                 </div>
                 <div class="modal-body">
-                    <p><?php echo $this->session->flashdata('success_message'); ?></p>
+                    <p><?php echo $this->session->flashdata( 'success_message' ); ?></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
@@ -32,7 +32,7 @@
         <!-- /.modal-dialog -->
     </div>
 <?php } ?>
-<?php if ($this->session->flashdata('error_message') != "") { ?>
+<?php if ( $this->session->flashdata( 'error_message' ) != "" ) { ?>
     <div class="modal modal-danger fade in" id="modal-danger" style="">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -42,7 +42,7 @@
                     <h4 class="modal-title">Oops! Something went wrong.</h4>
                 </div>
                 <div class="modal-body">
-                    <p><?php echo $this->session->flashdata('error_message'); ?></p>
+                    <p><?php echo $this->session->flashdata( 'error_message' ); ?></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
@@ -89,14 +89,14 @@
 <script src="<?php echo base_url(); ?>assets/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url(); ?>assets/dist/js/demo.js"></script>
-<?php if ($this->session->flashdata('success_message') != "") { ?>
+<?php if ( $this->session->flashdata( 'success_message' ) != "" ) { ?>
     <script type="text/javascript">
         $(document).ready(function () {
             $('#modal-success').modal('show');
         });
     </script>
 <?php } ?>
-<?php if ($this->session->flashdata('error_message') != "") { ?>
+<?php if ( $this->session->flashdata( 'error_message' ) != "" ) { ?>
     <script type="text/javascript">
         $(document).ready(function () {
             $('#modal-danger').modal('show');

@@ -35,14 +35,14 @@
                                     <th>Action</th>
                                     </thead>
                                     <tbody>
-                                    <?php
-                                    $i = $pages + 1;
-                                    foreach ($listgroups as $group): ?>
+									<?php
+									$i = $pages + 1;
+									foreach ( $listgroups as $group ): ?>
                                         <tr>
-                                            <td><?php echo $i++; ?></td>
-                                            <td><?php echo ucfirst($group['name']); ?></td>
+                                            <td><?php echo $i ++; ?></td>
+                                            <td><?php echo ucfirst( $group['name'] ); ?></td>
                                             <td>
-                                                <a href="<?php echo base_url('auth/edit_group/' . $group['id']); ?>"
+                                                <a href="<?php echo base_url( 'auth/edit_group/' . $group['id'] ); ?>"
                                                    title="Edit" rel="tooltip"><i class="fa fa-pencil-square-o"></i></a>
                                                 | <a
                                                         href="javascript:void(0)" rel="tooltip"
@@ -50,12 +50,12 @@
                                                         title="Delete"><i
                                                             class="fa fa-trash text-danger"></i></a></td>
                                         </tr>
-                                    <?php endforeach; ?>
+									<?php endforeach; ?>
                                     </tbody>
                                 </table>
                                 <div class="clear pagination">
                                     <ul>
-                                        <?php echo $this->pagination->create_links(); ?>
+										<?php echo $this->pagination->create_links(); ?>
                                     </ul>
                                 </div>
                             </div>
@@ -77,11 +77,8 @@
             callback: function (result) {
                 if (result) {
                     window.location.replace(delurl);
-                } else {
-
                 }
             }
         });
     }
-
 </script>

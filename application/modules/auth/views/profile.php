@@ -28,7 +28,7 @@
                     <thead>
                     </thead>
                     <tbody>
-                    <?php foreach ($userData as $user): ?>
+					<?php foreach ( $userData as $user ): ?>
                         <tr>
                             <td>Name</td>
                             <td><?php echo $user['first_name'] . " " . $user['last_name']; ?></td>
@@ -51,9 +51,9 @@
                         </tr>
                         <tr>
                             <td>Action</td>
-                            <td><a href="<?php echo base_url('auth/editProfile'); ?>">Edit Details</a></td>
+                            <td><a href="<?php echo base_url( 'auth/editProfile' ); ?>">Edit Details</a></td>
                         </tr>
-                    <?php endforeach; ?>
+					<?php endforeach; ?>
                     </tbody>
                 </table>
             </div>
