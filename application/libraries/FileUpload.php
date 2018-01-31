@@ -79,9 +79,11 @@ class FileUpload
         $CI->upload->initialize($config);
 
         $profilefile = $CI->mymodel->get($table, 'profile_image_url', 'id=' . $insert_id);
-//        var_dump(base_url() . $profilefile[0]['profile1']);
-        if (getimagesize('./' . $profilefile[0]['profile_image_url']) !== false) {
-            unlink('./' . $profilefile[0]['profile_image_url']);
+        //var_dump(base_url() . $profilefile[0]['profile1']);
+        if ($profilefile[0]['profile_image_url'] != "") {
+            if (getimagesize('./' . $profilefile[0]['profile_image_url']) !== false) {
+                unlink('./' . $profilefile[0]['profile_image_url']);
+            }
         }
 
         if (!$CI->upload->do_upload($name)) {

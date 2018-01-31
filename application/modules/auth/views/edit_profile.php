@@ -105,8 +105,15 @@
                                 </div>
                             </div>
                             <div class="col-md-4">
+                                <?php 
+                                $userDetails = $this->ion_auth->user()->row_array();
+                                $profileImage = $userDetails['profile_image_url'];
+                                if ($profileImage != ""):?>
                                 <?php if (getimagesize('./' . $user->profile_image_url) !== false):?>
                                 <img src="<?php echo base_url($user->profile_image_url); ?>" class="img-responsive">
+                            <?php endif; ?>
+                            <?php else: ?>
+                                <img src="<?php echo base_url('assets/dist/img/avatar.png'); ?>" class="img-responsive">
                             <?php endif; ?>
                             </div>
                         </div>

@@ -33,6 +33,8 @@
           href="<?php echo base_url(); ?>assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
     <!-- jQuery 2.2.3 -->
     <script src="<?php echo base_url(); ?>assets/plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <!-- custom css -->
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/css/custom.css">
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
