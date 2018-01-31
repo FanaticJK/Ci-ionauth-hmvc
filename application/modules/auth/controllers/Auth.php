@@ -665,9 +665,9 @@ class Auth extends MX_Controller {
 		if ( ! $this->ion_auth->logged_in() || ( ! $this->ion_auth->is_admin() ) ) {
 			redirect( 'auth', 'refresh' );
 		}
-		$pagingConfig        = $this->paginationlib->initPagination( "/auth/list_user/pages/", $this->mymodel->getCount( 'id', 'groups', 'id != ' . $this->ion_auth->user()->row()->id ) );
+		$pagingConfig        = $this->paginationlib->initPagination( "/auth/list_user/pages/", $this->mymodel->getCount( 'id', 'groups' ) );
 		$this->data['pages'] = $pages = ( ( $this->uri->segment( 3 ) == 'pages' && $this->uri->segment( 4 ) != '' ) ? ( $pagingConfig['per_page'] * $this->uri->segment( 4 ) ) - $pagingConfig['per_page'] : 0 );
-		$this->data['listgroups'] = $this->mymodel->get( 'groups', '*', 'id != ' . $this->ion_auth->user()->row()->id, $pagingConfig['per_page'], $pages );
+		$this->data['listgroups'] = $this->mymodel->get( 'groups', '*', '' , $pagingConfig['per_page'], $pages );
 		$this->_render_page( 'auth/list_groups', $this->data );
 		$this->load->view( 'include/footer' );
 	}
@@ -700,6 +700,9 @@ class Auth extends MX_Controller {
 	public function delete_group( $id ) {
 		if ( ! $this->ion_auth->logged_in() || ! $this->ion_auth->is_admin() ) {
 			// redirect them to the home page because they must be an administrator to view this
+			return show_error( 'You must be an administrator to view this page.' );
+		}
+		if('Auth' == $this->mymodel->getValue('id', $id, 'groups', 'name')){
 			return show_error( 'You must be an administrator to view this page.' );
 		}
 		if ( $this->mymodel->delete( 'groups', 'id', $id ) ) {

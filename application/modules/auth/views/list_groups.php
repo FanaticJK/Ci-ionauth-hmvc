@@ -44,11 +44,14 @@
                                             <td>
                                                 <a href="<?php echo base_url( 'auth/edit_group/' . $group['id'] ); ?>"
                                                    title="Edit" rel="tooltip"><i class="fa fa-pencil-square-o"></i></a>
-                                                | <a
-                                                        href="javascript:void(0)" rel="tooltip"
-                                                        onclick="deleteGroup('delete_group', '<?php echo $group['id']; ?>')"
-                                                        title="Delete"><i
-                                                            class="fa fa-trash text-danger"></i></a></td>
+												<?php if ( $group['name'] != 'admin' ): ?>
+                                                | <a href="javascript:void(0)" rel="tooltip"
+                                                     onclick="deleteGroup('delete_group', '<?php echo $group['id']; ?>')"
+                                                     title="Delete">
+                                                    <i class="fa fa-trash text-danger"></i>
+                                                </a>
+                                                <?php endif; ?>
+                                            </td>
                                         </tr>
 									<?php endforeach; ?>
                                     </tbody>
