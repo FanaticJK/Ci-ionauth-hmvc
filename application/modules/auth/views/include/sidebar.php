@@ -40,6 +40,10 @@
                     </span>
                 </a>
             </li>
+            <!-- display to admin only -->
+            <?php 
+                if ( $this->ion_auth->logged_in() && $this->ion_auth->is_admin() ) :
+            ?>
             <li class="<?php echo ($this->uri->segment(1) == 'auth' && $this->uri->segment(1) != '' && ($this->uri->segment(2) == 'list_user' || $this->uri->segment(2) == 'create_user' || $this->uri->segment(2) == 'edit_user')) ? 'active' : ''; ?> treeview">
                 <a href="#">
                     <i class="fa fa-dashboard"></i> <span>Users</span>
@@ -60,8 +64,8 @@
                 <a href="#">
                     <i class="fa fa-dashboard"></i> <span>Groups</span>
                     <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
                 </a>
                 <ul class="treeview-menu">
                     <li class="<?php echo ($this->uri->segment(2) == 'list_groups' && $this->uri->segment(2) != '') ? 'active' : ''; ?>">
@@ -72,6 +76,8 @@
                     </li>
                 </ul>
             </li>
+            <?php endif; ?>
+            <!-- display to admin only -->
         </ul>
     </section>
     <!-- /.sidebar -->

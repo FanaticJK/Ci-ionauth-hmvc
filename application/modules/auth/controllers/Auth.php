@@ -648,7 +648,7 @@ class Auth extends MX_Controller {
 // list users
 
 	public function list_user() {
-		$this->data['title'] = $this->lang->line( 'edit_user_heading' );
+		$this->data['title'] = 'List Users';
 		if ( ! $this->ion_auth->logged_in() || ( ! $this->ion_auth->is_admin() ) ) {
 			redirect( 'auth', 'refresh' );
 		}
@@ -661,7 +661,7 @@ class Auth extends MX_Controller {
 
 	// list groups
 	public function list_groups() {
-		$this->data['title'] = $this->lang->line( 'edit_user_heading' );
+		$this->data['title'] = 'List Groups';
 		if ( ! $this->ion_auth->logged_in() || ( ! $this->ion_auth->is_admin() ) ) {
 			redirect( 'auth', 'refresh' );
 		}
@@ -702,7 +702,8 @@ class Auth extends MX_Controller {
 			// redirect them to the home page because they must be an administrator to view this
 			return show_error( 'You must be an administrator to view this page.' );
 		}
-		if('Auth' == $this->mymodel->getValue('id', $id, 'groups', 'name')){
+		$group = $this->ion_auth->group( $id )->row();
+		if($this->config->item( 'admin_group', 'ion_auth' ) === $group->name){
 			return show_error( 'You must be an administrator to view this page.' );
 		}
 		if ( $this->mymodel->delete( 'groups', 'id', $id ) ) {
